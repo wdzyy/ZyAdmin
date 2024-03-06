@@ -1,0 +1,93 @@
+{
+	"name": "Zy-Admin",
+	"version": "0.0.1",
+	"description": "vue3 vite next admin template",
+	"author": "lyt_20201208",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/wdzyy/ZyAdmin"
+	},
+	"bugs": {
+		"url": ""
+	},
+	"keywords": [
+		"vue",
+		"vue3",
+		"vuejs/vue-next",
+		"vuejs/vue-next-template",
+		"element-ui",
+		"element-plus",
+		"Zy-Admin",
+		"next-admin"
+	],
+	"engines": {
+		"node": ">=16.0.0",
+		"npm": ">= 7.0.0"
+	},
+	"scripts": {
+		"dev": "vite --force",
+		"build": "vite build",
+		"build:deploy": "vite build && node ./deploy.mjs",
+		"lint-fix": "eslint --fix --ext .js --ext .ts --ext .tsx --ext .jsx --ext .vue src/"
+	},
+	"dependencies": {
+		"@element-plus/icons-vue": "^2.3.1",
+		"@visactor/vtable": "^0.20.3",
+		"@vueuse/core": "^10.9.0",
+		"axios": "^1.6.7",
+		"echarts": "^5.5.0",
+		"element-plus": "^2.5.6",
+		"js-cookie": "^3.0.5",
+		"mitt": "^3.0.1",
+		"nprogress": "^0.2.0",
+		"pinia": "^2.1.7",
+		"qrcodejs2-fixes": "^0.0.2",
+		"qs": "^6.11.2",
+		"screenfull": "^6.0.2",
+		"sortablejs": "^1.15.2",
+		"vue": "^3.4.21",
+		"vue-clipboard3": "^2.0.0",
+		"vue-demi": "^0.13.11",
+		"vue-router": "^4.3.0"
+	},
+	"devDependencies": {
+		"@antfu/eslint-config": "^2.6.0",
+		"@eslint/eslintrc": "^3.0.2",
+		"@types/node": "^18.19.20",
+		"@types/nprogress": "^0.2.3",
+		"@typescript-eslint/eslint-plugin": "^5.62.0",
+		"@typescript-eslint/parser": "^5.62.0",
+		"@unocss/eslint-config": "^0.58.5",
+		"@unocss/eslint-plugin": "^0.58.5",
+		"@unocss/reset": "^0.58.5",
+		"@unocss/transformer-directives": "^0.58.5",
+		"@vitejs/plugin-vue": "^4.6.2",
+		"@vitejs/plugin-vue-jsx": "^3.1.0",
+		"@vue/compiler-sfc": "^3.4.21",
+		"@vue/tsconfig": "^0.5.1",
+		"autoprefixer": "^10.4.17",
+		"chalk": "^5.3.0",
+		"eslint": "^8.57.0",
+		"eslint-plugin-vue": "^9.22.0",
+		"ora": "^8.0.1",
+		"postcss": "^8.4.35",
+		"prettier": "^2.8.8",
+		"sass": "^1.71.1",
+		"ssh2-sftp-client": "^10.0.3",
+		"typescript": "^5.3.3",
+		"unocss": "^0.58.5",
+		"unplugin-auto-import": "^0.17.5",
+		"unplugin-vue-components": "^0.26.0",
+		"vite": "^5.1.4",
+		"vite-plugin-cdn-import": "^0.3.5",
+		"vite-plugin-compression": "^0.5.1",
+		"vue-eslint-parser": "^9.4.2",
+		"vue-tsc": "^1.8.27"
+	},
+	"browserslist": [
+		"> 1%",
+		"last 2 versions",
+		"not dead"
+	]
+}
