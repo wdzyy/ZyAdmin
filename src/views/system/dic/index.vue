@@ -126,8 +126,7 @@ onMounted(() => {
       <DicDialog ref="dicDialogRef" @refresh="getTableData()" />
     </template>
     <template #foot>
-      <el-pagination v-model:current-page="state.tableData.param.pageNum" v-model:page-size="state.tableData.param.pageSize" background
-        class="mt-15px" layout="total, sizes, prev, pager, next, jumper" :page-sizes="[10, 20, 30]"
+      <el-pagination v-model:current-page="state.tableData.param.pageNum" v-model:page-size="state.tableData.param.pageSize" background layout="total, sizes, prev, pager, next, jumper" :page-sizes="[10, 20, 30]"
         :pager-count="5" :total="state.tableData.total" @current-change="onHandleCurrentChange"
         @size-change="onHandleSizeChange" />
     </template>
