@@ -82,9 +82,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="layout-padding system-dept-container">
-    <el-card class="layout-padding-auto" shadow="hover">
-      <div class="system-dept-search mb-15px">
+  <ListPageWrapper>
+    <template #head>
+      <div>
         <el-input placeholder="请输入部门名称" size="default" style="max-width: 180px" />
         <el-button class="ml-10px" size="default" type="primary">
           <el-icon>
@@ -99,8 +99,10 @@ onMounted(() => {
           新增部门
         </el-button>
       </div>
+    </template>
+    <template #default>
       <el-table v-loading="state.tableData.loading" :data="state.tableData.data" default-expand-all row-key="id"
-        style="width: 100%" :tree-props="{ children: 'children', hasChildren: 'hasChildren' }">
+        style="height: 100%" :tree-props="{ children: 'children', hasChildren: 'hasChildren' }">
         <el-table-column label="部门名称" prop="deptName" show-overflow-tooltip />
         <el-table-column label="排序" show-overflow-tooltip width="80">
           <template #default="scope">
@@ -133,7 +135,7 @@ onMounted(() => {
           </template>
         </el-table-column>
       </el-table>
-    </el-card>
-    <DeptDialog ref="deptDialogRef" @refresh="getTableData()" />
-  </div>
+      <DeptDialog ref="deptDialogRef" @refresh="getTableData()" />
+    </template>
+  </ListPageWrapper>
 </template>

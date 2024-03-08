@@ -1,116 +1,433 @@
 <template>
-  <div class="system-user-container layout-padding">
-    <el-card class="layout-padding-auto" shadow="hover">
-      <el-table-v2
-        :columns="columns"
-        :data="data"
-        :height="400"
-        :width="700"
-      />
-    </el-card>
-  </div>
-</template>
+  <ListPageWrapper>
+    <template #default>
+      <el-auto-resizer>
+        <template #default="{ height, width }">
+          <el-table-v2
+            :columns="columns"
+            :data="data"
+            fixed
+            :height="height"
+            :width="width"
+          />
+        </template>
+      </el-auto-resizer>
+    </template>
+    <template #foot>
+      <el-pagination background layout="prev, pager, next" :total="1000" />
+    </template>
+  </ListPageWrapper>
+</template> 
 
 <script lang="ts" setup>
 import { ref, computed } from 'vue'
-const fixedColumns = ref([
+import { type Column } from 'element-plus'
+enum FixedDir {
+  LEFT = 'left',
+  RIGHT = 'right',
+}
+
+const fixedColumns = ref<Column[]>([
   {
     title: '所在车间',
     key: 'orgId',
     dataKey: 'orgId',
-    fixed: 'left'
+    width: 100,
+    fixed: FixedDir.LEFT
   },
   {
     title: '所在班组',
     key: 'classId',
     dataKey: 'classId',
-    fixed: 'left'
+    width: 100,
+    fixed: FixedDir.LEFT
   },
   {
     title: '工号',
     key: 'personId',
     dataKey: 'personId',
-    fixed: 'left'
+    width: 100,
+    fixed: FixedDir.LEFT
   },
   {
     title: '姓名',
     key: 'name',
     dataKey: 'name',
-    fixed: 'left'
+    width: 100,
+    fixed: FixedDir.LEFT
   },
   {
     title: '款号',
     key: 'productCode',
     dataKey: 'productCode',
-    fixed: 'left'
+    width: 100,
+    fixed: FixedDir.LEFT
   },
   {
     title: '工序号',
     key: 'processCode',
     dataKey: 'processCode',
-    fixed: 'left'
+    width: 100,
+    fixed: FixedDir.LEFT
   },
   {
     title: '工序名称',
     key: 'processName',
     dataKey: 'processName',
-    fixed: 'left'
+    width: 100,
+    fixed: FixedDir.LEFT
   },
   {
     title: '单价',
     key: 'price',
     dataKey: 'price',
-    fixed: 'left'
+    width: 100,
+    fixed: FixedDir.LEFT
   },
   {
     title: '日期',
     key: 'date',
     dataKey: 'date',
-    fixed: 'left'
+    width: 100,
+    fixed: FixedDir.LEFT
   }
 ])
-const dynamicColumns = ref([
-  {
-    title: '1月1日',
-    dataKey: '1-1',
-    key: '1-1'
-  },
-  {
-    title: '1月2日',
-    dataKey: '1-2',
-    key: '1-2'
-  },
-])
+const dynamicColumns = ref<Column[]>([])
 const data = ref([
   {
-    orgId: '1',
-    classId: '2',
-    personId: '3',
-    name: '4',
-    productCode: '5',
-    processCode: '6',
-    processName: '7',
-    price: '8',
-    date: '9',
-    '1-1': '10',
-    '1-2': '11'
+    orgId: '前制车间',
+    classId: '前制班组',
+    personId: '0001',
+    name: ' 杨丹丹',
+    productCode: '20240126',
+    processCode: '871',
+    processName: '打拉链拌套结*1',
+    price: '0.8',
+    date: '产量',
+    day1709704657: '10',
+    day1709704670: '11'
+  },
+  {
+    orgId: '前制车间',
+    classId: '前制班组',
+    personId: '0001',
+    name: ' 杨丹丹',
+    productCode: '20240126',
+    processCode: '871',
+    processName: '打拉链拌套结*1',
+    price: '0.8',
+    date: '总价',
+    day1709704657: '10',
+    day1709704670: '11'
+  },
+  {
+    orgId: '前制车间',
+    classId: '前制班组',
+    personId: '0001',
+    name: ' 杨一样',
+    productCode: '20240126',
+    processCode: '871',
+    processName: '打拉链拌套结*1',
+    price: '0.8',
+    date: '产量',
+    day1709704657: '10',
+    day1709704670: '11'
+  },
+  {
+    orgId: '前制车间',
+    classId: '前制班组',
+    personId: '0001',
+    name: ' 杨一样',
+    productCode: '20240126',
+    processCode: '871',
+    processName: '打拉链拌套结*1',
+    price: '0.8',
+    date: '总价',
+    day1709704657: '10',
+    day1709704670: '11'
+  },
+  {
+    orgId: '前制车间',
+    classId: '前制班组',
+    personId: '0001',
+    name: ' 杨一样',
+    productCode: '20240126',
+    processCode: '871',
+    processName: '打拉链拌套结*1',
+    price: '0.8',
+    date: '总价',
+    day1709704657: '10',
+    day1709704670: '11'
+  },
+  {
+    orgId: '前制车间',
+    classId: '前制班组',
+    personId: '0001',
+    name: ' 杨一样',
+    productCode: '20240126',
+    processCode: '871',
+    processName: '打拉链拌套结*1',
+    price: '0.8',
+    date: '总价',
+    day1709704657: '10',
+    day1709704670: '11'
+  },
+  {
+    orgId: '前制车间',
+    classId: '前制班组',
+    personId: '0001',
+    name: ' 杨一样',
+    productCode: '20240126',
+    processCode: '871',
+    processName: '打拉链拌套结*1',
+    price: '0.8',
+    date: '总价',
+    day1709704657: '10',
+    day1709704670: '11'
+  },
+  {
+    orgId: '前制车间',
+    classId: '前制班组',
+    personId: '0001',
+    name: ' 杨一样',
+    productCode: '20240126',
+    processCode: '871',
+    processName: '打拉链拌套结*1',
+    price: '0.8',
+    date: '总价',
+    day1709704657: '10',
+    day1709704670: '11'
+  },
+  {
+    orgId: '前制车间',
+    classId: '前制班组',
+    personId: '0001',
+    name: ' 杨一样',
+    productCode: '20240126',
+    processCode: '871',
+    processName: '打拉链拌套结*1',
+    price: '0.8',
+    date: '总价',
+    day1709704657: '10',
+    day1709704670: '11'
+  },
+  {
+    orgId: '前制车间',
+    classId: '前制班组',
+    personId: '0001',
+    name: ' 杨一样',
+    productCode: '20240126',
+    processCode: '871',
+    processName: '打拉链拌套结*1',
+    price: '0.8',
+    date: '总价',
+    day1709704657: '10',
+    day1709704670: '11'
+  },
+  {
+    orgId: '前制车间',
+    classId: '前制班组',
+    personId: '0001',
+    name: ' 杨一样',
+    productCode: '20240126',
+    processCode: '871',
+    processName: '打拉链拌套结*1',
+    price: '0.8',
+    date: '总价',
+    day1709704657: '10',
+    day1709704670: '11'
+  },
+  {
+    orgId: '前制车间',
+    classId: '前制班组',
+    personId: '0001',
+    name: ' 杨一样',
+    productCode: '20240126',
+    processCode: '871',
+    processName: '打拉链拌套结*1',
+    price: '0.8',
+    date: '总价',
+    day1709704657: '10',
+    day1709704670: '11'
+  },
+  {
+    orgId: '前制车间',
+    classId: '前制班组',
+    personId: '0001',
+    name: ' 杨一样',
+    productCode: '20240126',
+    processCode: '871',
+    processName: '打拉链拌套结*1',
+    price: '0.8',
+    date: '总价',
+    day1709704657: '10',
+    day1709704670: '11'
+  },
+  {
+    orgId: '前制车间',
+    classId: '前制班组',
+    personId: '0001',
+    name: ' 杨一样',
+    productCode: '20240126',
+    processCode: '871',
+    processName: '打拉链拌套结*1',
+    price: '0.8',
+    date: '总价',
+    day1709704657: '10',
+    day1709704670: '11'
+  },
+  {
+    orgId: '前制车间',
+    classId: '前制班组',
+    personId: '0001',
+    name: ' 杨一样',
+    productCode: '20240126',
+    processCode: '871',
+    processName: '打拉链拌套结*1',
+    price: '0.8',
+    date: '总价',
+    day1709704657: '10',
+    day1709704670: '11'
+  },
+  {
+    orgId: '前制车间',
+    classId: '前制班组',
+    personId: '0001',
+    name: ' 杨一样',
+    productCode: '20240126',
+    processCode: '871',
+    processName: '打拉链拌套结*1',
+    price: '0.8',
+    date: '总价',
+    day1709704657: '10',
+    day1709704670: '11'
+  },
+  {
+    orgId: '前制车间',
+    classId: '前制班组',
+    personId: '0001',
+    name: ' 杨一样',
+    productCode: '20240126',
+    processCode: '871',
+    processName: '打拉链拌套结*1',
+    price: '0.8',
+    date: '总价',
+    day1709704657: '10',
+    day1709704670: '11'
+  },
+  {
+    orgId: '前制车间',
+    classId: '前制班组',
+    personId: '0001',
+    name: ' 杨一样',
+    productCode: '20240126',
+    processCode: '871',
+    processName: '打拉链拌套结*1',
+    price: '0.8',
+    date: '总价',
+    day1709704657: '10',
+    day1709704670: '11'
+  },
+  {
+    orgId: '前制车间',
+    classId: '前制班组',
+    personId: '0001',
+    name: ' 杨一样',
+    productCode: '20240126',
+    processCode: '871',
+    processName: '打拉链拌套结*1',
+    price: '0.8',
+    date: '总价',
+    day1709704657: '10',
+    day1709704670: '11'
+  },
+  {
+    orgId: '前制车间',
+    classId: '前制班组',
+    personId: '0001',
+    name: ' 杨一样',
+    productCode: '20240126',
+    processCode: '871',
+    processName: '打拉链拌套结*1',
+    price: '0.8',
+    date: '总价',
+    day1709704657: '10',
+    day1709704670: '11'
+  },
+  {
+    orgId: '前制车间',
+    classId: '前制班组',
+    personId: '0001',
+    name: ' 杨一样',
+    productCode: '20240126',
+    processCode: '871',
+    processName: '打拉链拌套结*1',
+    price: '0.8',
+    date: '总价',
+    day1709704657: '10',
+    day1709704670: '11'
+  },
+  {
+    orgId: '前制车间',
+    classId: '前制班组',
+    personId: '0001',
+    name: ' 杨一样',
+    productCode: '20240126',
+    processCode: '871',
+    processName: '打拉链拌套结*1',
+    price: '0.8',
+    date: '总价',
+    day1709704657: '10',
+    day1709704670: '11'
+  },
+  {
+    orgId: '前制车间',
+    classId: '前制班组',
+    personId: '0001',
+    name: ' 杨一样',
+    productCode: '20240126',
+    processCode: '871',
+    processName: '打拉链拌套结*1',
+    price: '0.8',
+    date: '总价',
+    day1709704657: '10',
+    day1709704670: '11'
+  },
+  {
+    orgId: '前制车间',
+    classId: '前制班组',
+    personId: '0001',
+    name: ' 杨一样',
+    productCode: '20240126',
+    processCode: '871',
+    processName: '打拉链拌套结*1',
+    price: '0.8',
+    date: '总价',
+    day1709704657: '10',
+    day1709704670: '11'
   }
 ])
 const columns = computed(() => {
   return [...fixedColumns.value, ...dynamicColumns.value]
 })
-</script>
-<style scoped lang="scss">
-.system-user-container {
-  :deep(.el-card__body) {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    overflow: auto;
 
-    .el-table {
-      flex: 1;
-    }
+// 或缺当前日期，并生成动态列
+const getDynamicColumns = async () => {
+  const date = new Date()
+  const day = date.getDate()
+  for (let i = 1; i <= day; i++) {
+    dynamicColumns.value.push({
+      title: `${date.getMonth() + 1}月${i}日`,
+      dataKey: `day${i}`,
+      width: 100,
+      key: i + ''
+    })
   }
 }
+onMounted(() => {
+  getDynamicColumns()
+})
+
+</script>
+<style scoped lang="scss">
 </style>

@@ -188,6 +188,39 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
             },
           },
         ]
+      },
+      {
+        path: '/echarts',
+        name: 'Echarts',
+        component: LAYOUT,
+        redirect: '/echarts/basic',
+        meta: {
+          title: '图表',
+          isLink: '',
+          isHide: false,
+          isKeepAlive: true,
+          isAffix: false,
+          isIframe: false,
+          roles: ['admin', 'common'],
+          icon: 'iconfont icon-tubiao',
+        },
+        children: [
+          {
+            path: '/echarts/basic',
+            name: 'EchartsBasic',
+            component: () => import('@/views/echarts/basic.vue'),
+            meta: {
+              title: '基础图表',
+              isLink: '',
+              isHide: false,
+              isKeepAlive: true,
+              isAffix: false,
+              isIframe: false,
+              roles: ['admin', 'common'],
+              icon: 'ele-Chart',
+            },
+          },
+        ]
       }
     ],
   },

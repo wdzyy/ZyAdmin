@@ -58,9 +58,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="system-menu-container layout-pd">
-    <el-card shadow="hover">
-      <div class="system-menu-search mb-15px">
+  <ListPageWrapper>
+    <template #head>
+      <div>
         <el-input placeholder="请输入菜单名称" size="default" style="max-width: 180px" />
         <el-button class="ml-10px" size="default" type="primary">
           <el-icon>
@@ -75,7 +75,9 @@ onMounted(() => {
           新增菜单
         </el-button>
       </div>
-      <el-table v-loading="state.tableData.loading" :data="state.tableData.data" row-key="path" style="width: 100%"
+    </template>
+    <template #default>
+      <el-table v-loading="state.tableData.loading" :data="state.tableData.data" row-key="path" style="height: 100%"
         :tree-props="{ children: 'children', hasChildren: 'hasChildren' }">
         <el-table-column label="菜单名称" show-overflow-tooltip>
           <template #default="scope">
@@ -120,7 +122,7 @@ onMounted(() => {
           </template>
         </el-table-column>
       </el-table>
-    </el-card>
-    <MenuDialog ref="menuDialogRef" @refresh="getTableData()" />
-  </div>
+      <MenuDialog ref="menuDialogRef" @refresh="getTableData()" />
+    </template>
+  </ListPageWrapper>
 </template>

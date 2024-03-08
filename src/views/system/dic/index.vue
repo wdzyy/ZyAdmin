@@ -77,9 +77,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="system-dic-container layout-padding">
-    <el-card class="layout-padding-auto" shadow="hover">
-      <div class="system-user-search mb-15px">
+  <ListPageWrapper>
+    <template #head>
+      <div>
         <el-input placeholder="请输入字典名称" size="default" style="max-width: 180px" />
         <el-button class="ml-10px" size="default" type="primary">
           <el-icon>
@@ -94,7 +94,9 @@ onMounted(() => {
           新增字典
         </el-button>
       </div>
-      <el-table v-loading="state.tableData.loading" :data="state.tableData.data" style="width: 100%">
+    </template>
+    <template #default>
+      <el-table v-loading="state.tableData.loading" :data="state.tableData.data" style="height: 100%">
         <el-table-column label="序号" type="index" width="50" />
         <el-table-column label="字典名称" prop="dicName" show-overflow-tooltip />
         <el-table-column label="字段名" prop="fieldName" show-overflow-tooltip />
@@ -121,11 +123,13 @@ onMounted(() => {
           </template>
         </el-table-column>
       </el-table>
+      <DicDialog ref="dicDialogRef" @refresh="getTableData()" />
+    </template>
+    <template #foot>
       <el-pagination v-model:current-page="state.tableData.param.pageNum" v-model:page-size="state.tableData.param.pageSize" background
         class="mt-15px" layout="total, sizes, prev, pager, next, jumper" :page-sizes="[10, 20, 30]"
         :pager-count="5" :total="state.tableData.total" @current-change="onHandleCurrentChange"
         @size-change="onHandleSizeChange" />
-    </el-card>
-    <DicDialog ref="dicDialogRef" @refresh="getTableData()" />
-  </div>
+    </template>
+  </ListPageWrapper>
 </template>

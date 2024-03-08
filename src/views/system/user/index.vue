@@ -83,9 +83,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="system-user-container layout-padding">
-    <el-card class="layout-padding-auto" shadow="hover">
-      <div class="system-user-search mb-15px">
+  <ListPageWrapper>
+    <template #head>
+      <div>
         <el-input placeholder="请输入用户名称" size="default" style="max-width: 180px" />
         <el-button class="ml-10px" size="default" type="primary">
           <el-icon>
@@ -100,7 +100,9 @@ onMounted(() => {
           新增用户
         </el-button>
       </div>
-      <el-table v-loading="state.tableData.loading" :data="state.tableData.data" style="width: 100%">
+    </template>
+    <template #default>
+      <el-table v-loading="state.tableData.loading" :data="state.tableData.data" style="height: 100%">
         <el-table-column label="序号" type="index" width="60" />
         <el-table-column label="账户名称" prop="userName" show-overflow-tooltip />
         <el-table-column label="用户昵称" prop="userNickname" show-overflow-tooltip />
@@ -133,26 +135,16 @@ onMounted(() => {
           </template>
         </el-table-column>
       </el-table>
+      <UserDialog ref="userDialogRef" @refresh="getTableData()" />
+    </template>
+    <template #foot>
       <el-pagination v-model:current-page="state.tableData.param.pageNum" v-model:page-size="state.tableData.param.pageSize" background
         class="mt-15px" layout="total, sizes, prev, pager, next, jumper" :page-sizes="[10, 20, 30]"
         :pager-count="5" :total="state.tableData.total" @current-change="onHandleCurrentChange"
         @size-change="onHandleSizeChange" />
-    </el-card>
-    <UserDialog ref="userDialogRef" @refresh="getTableData()" />
-  </div>
+    </template>
+  </ListPageWrapper>
 </template>
 
 <style scoped lang="scss">
-.system-user-container {
-  :deep(.el-card__body) {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    overflow: auto;
-
-    .el-table {
-      flex: 1;
-    }
-  }
-}
 </style>

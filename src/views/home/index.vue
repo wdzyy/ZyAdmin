@@ -480,7 +480,7 @@ watch(
 
 <template>
   <div class="home-container layout-pd">
-    <el-row class="home-card-one mb15" :gutter="15">
+    <el-row class="home-card-one mb-15px" :gutter="15">
       <el-col v-for="(v, k) in state.homeOne" :key="k" :class="{ 'home-media home-media-lg': k > 1, 'home-media-sm': k === 1 }" :lg="6" :md="12" :sm="12" :xl="6"
         :xs="24">
         <div class="home-card-item flex">
